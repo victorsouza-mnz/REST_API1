@@ -40,7 +40,7 @@ test('Should not save a post', async () => {
     const data = {title: generate() , content: generate()}
     const response1 = await request('http://localhost:3000/posts', 'post', data)
     const response2 = await request('http://localhost:3000/posts', 'post', data)
-    expect(response1.status).toBe(409)
+    expect(response2.status).toBe(409)
     const post = response1.data
     await postsService.removePost(post.id)
 })

@@ -4,7 +4,9 @@ exports.getPosts = () => {
     return postsData.getPosts()
 }
  
-exports.savePost = (post) => {
+exports.savePost = async (post) => {
+    const existingPost = await postsData.getPostByTitle(post.title)
+    if (existingPost) throw new Error ('Post alread exists')
     return postsData.savePost(post)
 }
 
